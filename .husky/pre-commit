@@ -1,0 +1,12 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+yarn lint || (
+    echo "ESLint Error"
+)
+
+yarn build || (
+    echo "❌👷 Build Failed"
+)
+
+echo "✅✅✅✅ Commiting this now "
