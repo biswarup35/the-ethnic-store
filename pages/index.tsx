@@ -1,8 +1,12 @@
+import * as React from "react";
 import type { NextPage } from "next";
-import { Button } from "@mui/material";
 
 const Home: NextPage = () => {
-  return <Button>Welcome</Button>;
+  return (
+    <React.Fragment>
+      <h1>Home Page</h1>
+    </React.Fragment>
+  );
 };
 
 export default Home;
