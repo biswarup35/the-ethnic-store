@@ -3,6 +3,10 @@ import * as React from "react";
 import Head from "next/head";
 
 import type { AppProps } from "next/app";
+import { ThemeProvider } from "@mui/material";
+import Header from "../components/header";
+import Footer from "../components/footer";
+import theme from "../theme";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -14,7 +18,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <title>The Enthic Store</title>
       </Head>
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <Header />
+        <main id="main-content">
+          <Component {...pageProps} />
+        </main>
+        <Footer />
+      </ThemeProvider>
     </React.Fragment>
   );
 }
