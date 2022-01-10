@@ -4,4 +4,7 @@ module.exports = {
   images: {
     domains: ["res.cloudinary.com"],
   },
+  env: {
+    SITE_URL: process.env.SITE_URL,
+  },
 };

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   AppBar,
   Toolbar,
@@ -62,14 +63,18 @@ const Header: React.FunctionComponent<HeaderProps> = (): JSX.Element => {
                   <IconButton>
                     <PersonIcon />
                   </IconButton>
-                  <IconButton>
-                    <FavoriteIcon />
-                  </IconButton>
+                  <Link href="/favorites" passHref>
+                    <IconButton>
+                      <FavoriteIcon />
+                    </IconButton>
+                  </Link>
                 </React.Fragment>
               )}
-              <IconButton>
-                <ShoppingCartIcon />
-              </IconButton>
+              <Link href={"/checkout"} passHref>
+                <IconButton>
+                  <ShoppingCartIcon />
+                </IconButton>
+              </Link>
             </Box>
           </Container>
         </Toolbar>

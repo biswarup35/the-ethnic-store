@@ -4,14 +4,16 @@ import discountCal from "../../utils/discount";
 interface PriceProps {
   price: number;
   discount?: number;
+  align?: "left" | "center" | "right";
 }
 
 const Price: React.FunctionComponent<PriceProps> = ({
   price,
   discount = 0,
+  align,
 }) => {
   return (
-    <Box sx={{ textAlign: "center" }}>
+    <Box sx={{ textAlign: align ?? "center" }}>
       <Typography variant="h6" component="span">
         <sup>&#8377;</sup> {discountCal(price)(discount)}
       </Typography>

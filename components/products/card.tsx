@@ -1,4 +1,5 @@
 import * as React from "react";
+import Link from "next/link";
 import Image from "next/image";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import truncateText from "../../utils/truncateText";
@@ -10,46 +11,46 @@ import {
   CardMedia,
   IconButton,
   Typography,
+  Box,
 } from "@mui/material";
 import Price from "./price";
+import FavoriteIcons from "./favoriteIcon";
 
 interface CardProps {
-  category: string;
+  slug: string;
+  brand: string;
   title: string;
-  rating: number;
   price: number;
+  discount: number;
+  image: string;
 }
 
 const Card: React.FunctionComponent<CardProps> = ({
-  category,
+  slug,
+  brand,
   title,
-  rating,
   price,
+  discount,
+  image,
 }) => {
-  const [favorite, setFavorite] = React.useState(false);
-  const toggleFavorite = () => {
-    setFavorite((value) => !value);
-  };
-
   return (
     <React.Fragment>
       <MuiCard sx={{ maxWidth: 284 }} elevation={0}>
         <CardMedia sx={{ position: "relative" }}>
-          <CardActionArea>
-            <Image
-              src="/libas.png"
-              alt="libas"
-              width={284}
-              height={374}
-              objectFit="cover"
-            />
-          </CardActionArea>
-          <IconButton
-            sx={{ position: "absolute", top: 5, right: 5 }}
-            onClick={toggleFavorite}
-          >
-            <FavoriteIcon htmlColor={favorite ? "hotpink" : ""} />
-          </IconButton>
+          <Link href={`/${encodeURIComponent(slug)}`} passHref>
+            <CardActionArea>
+              <Image
+                src={image}
+                alt={title}
+                width={284}
+                height={374}
+                objectFit="cover"
+              />
+            </CardActionArea>
+          </Link>
+          <Box sx={{ position: "absolute", top: 5, right: 5 }}>
+            <FavoriteIcons />
+          </Box>
         </CardMedia>
         <CardContent>
           <Typography
@@ -58,7 +59,7 @@ const Card: React.FunctionComponent<CardProps> = ({
             component="div"
             textAlign="center"
           >
-            {category}
+            {brand}
           </Typography>
           <Typography
             gutterBottom
@@ -68,7 +69,7 @@ const Card: React.FunctionComponent<CardProps> = ({
           >
             {truncateText(title, 120)}
           </Typography>
-          <Price price={price} discount={15} />
+          <Price price={price} discount={discount} />
         </CardContent>
       </MuiCard>
     </React.Fragment>

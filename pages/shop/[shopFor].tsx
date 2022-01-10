@@ -1,4 +1,5 @@
 import * as React from "react";
+const fetch = require("node-fetch");
 import Products from "../../components/views/products";
 interface ShopForProps {}
 
@@ -16,18 +17,18 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }: any) => {
-  const data = params;
+  const { shopFor } = params;
+  const response = await fetch(
+    `${process.env.SITE_URL}/products?shopFor=${shopFor}`
+  );
+  const data = await response.json();
   return {
     props: { data },
   };
 };
 
-const ShopFor: React.FunctionComponent<ShopForProps> = ({
-  data: { shopFor },
-}: any) => {
-  console.log(shopFor);
-
-  return <Products />;
+const ShopFor: React.FunctionComponent<ShopForProps> = ({ data }: any) => {
+  return <Products data={data} />;
 };
 
 export default ShopFor;
