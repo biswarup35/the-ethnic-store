@@ -7,6 +7,7 @@ import { ThemeProvider } from "@mui/material";
 import Header from "../components/header";
 import Footer from "../components/footer";
 import theme from "../theme";
+import { UserProvider } from "@auth0/nextjs-auth0";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -18,13 +19,15 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <title>The Enthic Store</title>
       </Head>
-      <ThemeProvider theme={theme}>
-        <Header />
-        <main id="main-content">
-          <Component {...pageProps} />
-        </main>
-        <Footer />
-      </ThemeProvider>
+      <UserProvider>
+        <ThemeProvider theme={theme}>
+          <Header />
+          <main id="main-content">
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+        </ThemeProvider>
+      </UserProvider>
     </React.Fragment>
   );
 }

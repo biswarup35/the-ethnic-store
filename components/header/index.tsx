@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {
   AppBar,
   Toolbar,
@@ -8,6 +9,9 @@ import {
   IconButton,
   Box,
   Container,
+  Avatar,
+  Menu,
+  MenuItem,
 } from "@mui/material";
 import * as React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -16,15 +20,35 @@ import Desktop from "./desktop";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import PersonIcon from "@mui/icons-material/Person";
 import Mobile from "./mobile";
+import { useUser } from "@auth0/nextjs-auth0";
 
 interface HeaderProps {}
 
 const Header: React.FunctionComponent<HeaderProps> = (): JSX.Element => {
+  const { user } = useUser();
+
   const smUp = useMediaQuery((theme: Theme) => theme.breakpoints.up("sm"));
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const openMenu = Boolean(anchorEl);
+
+  const handleMenuClick = React.useCallback(
+    (event: React.MouseEvent<HTMLButtonElement>) => {
+      setAnchorEl(event.currentTarget);
+    },
+    []
+  );
+  const handleClose = React.useCallback(() => {
+    setAnchorEl(null);
+  }, []);
+
   const [open, setOpen] = React.useState(false);
   const toggleDrawer = () => {
     setOpen((value) => !value);
   };
+
+  React.useEffect(() => {
+    console.log(user);
+  }, [user]);
 
   return (
     <React.Fragment>
@@ -60,8 +84,17 @@ const Header: React.FunctionComponent<HeaderProps> = (): JSX.Element => {
             <Box>
               {smUp && (
                 <React.Fragment>
-                  <IconButton>
-                    <PersonIcon />
+                  <IconButton onClick={handleMenuClick}>
+                    <Avatar sx={{ height: 28, width: 28 }}>
+                      {user?.picture && (
+                        <Image
+                          src={user.picture}
+                          alt={user.nickname ?? "user"}
+                          height={28}
+                          width={28}
+                        />
+                      )}
+                    </Avatar>
                   </IconButton>
                   <Link href="/favorites" passHref>
                     <IconButton>
@@ -81,6 +114,19 @@ const Header: React.FunctionComponent<HeaderProps> = (): JSX.Element => {
       </AppBar>
       <Toolbar variant="dense" />
       <Mobile open={open} onClose={toggleDrawer} />
+      <Menu open={openMenu} anchorEl={anchorEl} onClose={handleClose}>
+        {user && <MenuItem>Profile</MenuItem>}
+        {!user && (
+          <Link href="/api/auth/login" passHref>
+            <MenuItem>{!user && "Login"}</MenuItem>
+          </Link>
+        )}
+        {user && (
+          <Link href={"/api/auth/logout"} passHref>
+            <MenuItem onClick={handleClose}>Logout</MenuItem>
+          </Link>
+        )}
+      </Menu>
     </React.Fragment>
   );
 };

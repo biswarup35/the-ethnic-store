@@ -3,8 +3,8 @@ import { withPageAuthRequired, UserContext } from "@auth0/nextjs-auth0";
 
 export const getServerSideProps = withPageAuthRequired();
 
-const User = ({ user }: UserContext) => {
-  return <h1>Welcome {user?.name}</h1>;
+const Order = ({ user }: UserContext) => {
+  return <h1>Place your order</h1>;
 };
 
-export default User;
+export default Order;

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import * as React from "react";
 import type { GetStaticProps, NextPage } from "next";
 import {
@@ -53,7 +54,9 @@ const Checkout: NextPage = ({ data }: any) => {
             flexDirection="row"
             justifyContent="space-between"
           >
-            <Button variant="contained">Place order</Button>
+            <Link href={"/order"} passHref>
+              <Button variant="contained">Place order</Button>
+            </Link>
             <Typography>Total price:</Typography>
           </Box>
         </Container>
