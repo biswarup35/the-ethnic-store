@@ -1,0 +1,282 @@
+[
+    {
+        "id": "f6cd05691ea",
+        "for": "women",
+        "brand": "Libas",
+        "price": 3599,
+        "discount": 45,
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "rating": 4.1,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641552377/shop/libas-f6cd05691ea_o5c6os.jpg",
+        "title": "Women Navy Blue Pure Cotton Floral Print Kurta with Palazzos & Dupatta",
+        "description": "##PRODUCT DETAILS \nStately and versatile, this kurta set will be your top choice. Its eye-catching printed kurta comes with snug printed palazzos and a gorgeous printed dupatta for added appeal.\n\n###Kurta design:\nFloral printed\nAnarkali shape\nPleated style\nKeyhole neck, three-quarter regular sleeves\nGotta patti detail\nCalf length with flared hem\nPure cotton machine weave fabric\n\n###Palazzos design:\nPrinted Palazzos\nPartially elasticated waistband\nSlip-on closure\n2 pockets\n###Dupatta Design\nPrinted dupatta\n\n###Size & Fit\nThe model (height 5'8) is wearing a size S\n\n###Material & Care\nTop fabric: Pure Cotton\nBottom fabric: Pure Cotton\nDupatta fabric: Pure Cotton\nMachine wash"
+    },
+    {
+        "id": "e56bd5814f2",
+        "for": "women",
+        "brand": "Libas",
+        "price": 1899,
+        "discount": 50,
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "rating": 3.9,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641552793/shop/libas-e56bd5814f2_sbptnd.jpg",
+        "title": "Women Navy Blue & Beige Printed Anarkali Kurta",
+        "description": "##PRODUCT DETAILS \nNavy blue and beige printed Anarkali kurta, has a round neck, three-quarter sleeves, flared hem\n\n###Size & Fit\nThe model (height 5'8\") is wearing a size S\n\n###Material & Care\nChanderi silk blend\nHand-wash"
+    },
+    {
+        "id": "9d1554eebd6",
+        "for": "women",
+        "brand": "Biba",
+        "price": 3299,
+        "discount": 35,
+        "size": [
+            "XS",
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "rating": 4.2,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641553242/shop/biba-9d1554eebd6_g6e7js.jpg",
+        "title": "Women White & Black Ethnic Motifs Printed Tiering Anarkali Kurta",
+        "description": "##PRODUCT DETAILS \nNavy blue and beige printed Anarkali kurta, has a round neck, three-quarter sleeves, flared hem\n\n###Size & Fit\nThe model (height 5'8\") is wearing a size S\n\n###Material & Care\nChanderi silk blend\nHand-wash"
+    },
+    {
+        "id": "6eb753844e0",
+        "for": "kids",
+        "brand": "Lil Peacock",
+        "price": 749,
+        "discount": 65,
+        "size": [
+            "6-12M",
+            "12-18M",
+            "118-24M",
+            "2-3Y",
+            "4-5Y",
+            "5-6Y"
+        ],
+        "rating": 4,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641561636/shop/lil-peacock-6eb753844e0_w0i3cv.jpg",
+        "title": "Boys Teal Green & Gold-Toned Woven Design Regular Fit Nehru Jacket",
+        "description": "##PRODUCT DETAILS \nTeal Green& gold-toned woven design nehru jacket, has a mandarin collar, full button placket with a attached brooch\n\n###Size & Fit\nRegular fit\n\n###Material & Care\nOutrer: Brocade (polyester)\nLining: Polyester\nDry Clean only"
+    },
+    {
+        "id": "c18909ee700",
+        "for": "kids",
+        "brand": "JBN Creation",
+        "price": 2499,
+        "discount": 45,
+        "size": [
+            "6-12M",
+            "12-18M",
+            "118-24M",
+            "2-3Y",
+            "4-5Y",
+            "5-6Y"
+        ],
+        "rating": 4.4,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641562313/shop/jbn-creationc18909ee700_jwdbto.jpg",
+        "title": "Boys Black & Maroon Solid Sherwani Set",
+        "description": "##PRODUCT DETAILS \nBlack and maroon Sherwani set\nBlack solid sherwani, has a mandarin collar, long sleeves, full button closures and a chest pocket\nA pair of maroon solid mid-rise woven dhoti pants, has an elasticated waistband with drawstring fastening\n\n##Material & Care\nPolyester\nDry-clean\n"
+    },
+    {
+        "id": "7bbf87024dd",
+        "for": "kids",
+        "brand": "Vastramay",
+        "price": 2499,
+        "discount": 50,
+        "size": [
+            "6-12M",
+            "12-18M",
+            "118-24M",
+            "2-3Y",
+            "4-5Y",
+            "5-6Y"
+        ],
+        "rating": 4.4,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641562656/shop/vastramay-7bbf87024dd_ehwo6d.jpg",
+        "title": "Boys Multicoloured Floral Printed Regular Kurta with Pyjamas",
+        "description": "##PRODUCT DETAILS \nMulticoloured printed Kurta with Pyjamas\n\n###Kurta design:\nFloral printed\nStraight shape\nRegular style\nMandarin collar, long regular sleeves\nAbove knee length with straight hem\nCotton blend machine weave fabric\n\n###Pyjamas design:\nSolid Pyjamas\nElasticated waistband\nSlip-on closure\n\n###Material & Care\nTop fabric: Cotton Blend\nBottom fabric: Viscose Rayon\nDry clean"
+    },
+    {
+        "id": "289d7efa371",
+        "for": "men",
+        "brand": "Kisah",
+        "price": 9199,
+        "discount": 50,
+        "size": [
+            "38",
+            "40",
+            "42",
+            "44",
+            "46",
+            "50",
+            "48",
+            "52"
+        ],
+        "rating": 4,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641563110/shop/kisah-289d7efa371_q8dfqa.jpg",
+        "title": "Men Green & White Solid Kurta with Churidar",
+        "description": "##PRODUCT DETAILS\nGreen and white solid kurta with churidar\nGreen and white straight knee length kurta, has a mandarin collar, long sleeves, straight hem\nGreen and white solid churidar, drawstring closure\nComes with a nehru jacket \n\n###Size & Fit\nThe model (height 6') is wearing a size M \n\n###Material & Care\nTop fabric: Pure Cotton\nBottom fabric: Silk Blend\nDry-clean"
+    },
+    {
+        "id": "da3c8ccaa8b",
+        "for": "men",
+        "brand": "House of Pataudi",
+        "price": 2499,
+        "discount": 40,
+        "size": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "rating": 4.3,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641564045/shop/house-of-pataudi-da3c8ccaa8b_cew8ko.jpg",
+        "title": "Men Maroon & Beige Printed Jashn Nehru Jacket",
+        "description": "##PRODUCT DETAILS \n###About Brand:\nEverything created at the House of Pataudi is inspired by the modern Indian sensibility. We believe in a seamless weave of the past with the present. Our carefully crafted pieces give expression to a refined and effortless way of life.\n\n###About Collection:\nJashn: This line draws upon traditional costumes for inspiration while rendering an India modern aesthetic. Rich textiles with minimal yet exquisite zari embroideries. Ideal for celebrating the evening with a contemporary take on festive attire.\n\n###Design Details:\nMaroon and beige printed nehru jacket has a mandarin collar, sleeveless with full button placket, and three pockets\n\n###Size & Fit\nThe model (height 6') is wearing size 40\n\n###Material & Care\n100% Polyester\nDry clean"
+    },
+    {
+        "id": "171eecd07d8",
+        "for": "women",
+        "brand": "Anouk",
+        "price": 2699,
+        "discount": 40,
+        "size": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "rating": 4.3,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641573154/shop/anouk-171eecd07d8_ae7vdh.jpg",
+        "title": "Women Mustard Yellow Yoke Design Foil Printed Kurta with Trousers & Dupatta",
+        "description": "##PRODUCT DETAILS \nMustard yellow yoke design kurta with trousers\nMustard yellow straight calf length kurta, has a round neck, three-quarter sleeves, straight hem, side slits\nMustard yellow solid trousers with printed detailing, slip-on closure and 1 pocket\nGreen & Gold Toned printed dupatta\n\n###Size & Fit\nThe model (height 5'8\") is wearing a size S\n\n###Material & Care\nKurta fabric: 100% Polyester\nBottom fabric: 100% Polyester\nDupatta fabric: art silk\nHand-wash"
+    },
+    {
+        "id": "8b166130bdc",
+        "for": "women",
+        "brand": "Nayo",
+        "price": 3699,
+        "discount": 60,
+        "size": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL",
+            "XXXL"
+        ],
+        "rating": 4.3,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641573573/shop/nayo-8b166130bdc_p1nwyr.jpg",
+        "title": "Women Blue Floral Printed Kurta with Trousers & Dupatta",
+        "description": "##PRODUCT DETAILS \nBlue printed kurta with trousers\nBlue anarkali calf length kurta, has a round neck, three-quarter sleeves, flared hem\nBlue printed trousers, slip-on closure\n\n###Size & Fit\nThe model (height 5'8\") is wearing a size S\n\n###Material & Care\nKurta fabric: pure cotton\nBottom fabric: pure cotton\nDupatta fabric: pure cotton\nHand-wash"
+    },
+    {
+        "id": "4848198f327",
+        "for": "women",
+        "brand": "Azira",
+        "price": 1999,
+        "discount": 50,
+        "size": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "rating": 4.3,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641573850/shop/azira-4848198f327_kinzbc.jpg",
+        "title": "Women Navy Blue & Off-White Solid Kurta with Palazzos & Ethnic Jacket",
+        "description": "##PRODUCT DETAILS \nNavy blue and off-white solid kurta with printed palazzos and ethnic jacket \nNavy blue solid straight calf length kurta, has a round neck, sleeveless, straight hem, side slits\nNavy blue and off-white printed palazzos, has an elasticated waistband, slip-on closure\nComes with a navy blue and off-white printed ethnic jacket, has a round neck, three-quarter sleeves, button closure\n\n###Size & Fit\nThe model (height 5'8\") is wearing a size S\n\n###Material & Care\nTop fabric: Poly crepe\nBottom fabric: Poly crepe\nMachine-wash"
+    },
+    {
+        "id": "86b6f0d3aac",
+        "for": "women",
+        "brand": "Indo Era",
+        "price": 6199,
+        "discount": 67,
+        "size": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "rating": 4.2,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641574159/shop/indo-era-86b6f0d3aac_bigmst.jpg",
+        "title": "Women Purple Floral Embroidered Regular Kurta with Trousers & With Dupatta",
+        "description": "##PRODUCT DETAILS \nPurple embroidered Kurta with Trousers with dupatta\n\n###Kurta design:\nFloral embroidered\nStraight shape\nRegular style\nRound neck, three-quarter regular sleeves\nCalf length with straight hem\nPoly chiffon machine weave fabric\n\n###Trousers design:\nSelf design Trousers\nPartially elasticated waistband\nSlip-on closure\n\n###Size & Fit\nThe model (height 5'8) is wearing a size S\n\n###Material & Care\nTop fabric: Poly Chiffon\nBottom fabric: Viscose Rayon\nDupatta fabric: Silk Chiffon\nDry clean"
+    },
+    {
+        "id": "2c08b8f6568",
+        "for": "women",
+        "brand": "Ahalyaa",
+        "price": 5500,
+        "discount": 72,
+        "size": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "rating": 4,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641574478/shop/ahalyaa-2c08b8f6568_uwzykj.jpg",
+        "title": "Women Burgundy & Golden Printed Kurta with Trousers",
+        "description": "##PRODUCT DETAILS \nBurgundy and golden printed kurta with trousers\nBurgundy and golden kaftan calf length kurta, has a V-neck, three-quarter sleeves, straight hem, side slits and with fabric belt\nBurgundy and golden striped trousers, has partially elasticated waistband, slip-on closure\n\n###Size & Fit\nThe model (height 5'8\") is wearing a size S\n\n###Material & Care\nTop fabric: Poly Crepe\nBottom fabric: Poly Crepe\nHand-wash"
+    },
+    {
+        "id": "b7bec8acf46",
+        "for": "women",
+        "brand": "Gerua",
+        "price": 2999,
+        "discount": 50,
+        "size": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "rating": 4.3,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641574797/shop/gerua-b7bec8acf46_bixm3j.jpg",
+        "title": "Women Peach-Coloured & Off-White Printed Kurta with Palazzos & Dupatta",
+        "description": "##PRODUCT DETAILS \nPeach-Coloured and off-white printed kurta with palazzos and dupatta\nPeach-Coloured A-line calf length kurta, has a V-neck, three-quarter sleeves, side slits\nOff-white printed palazzos, has partially elasticated waistband, slip-on closure\nPeach-Coloured and off-white printed dupatta, has printed border\n\n##Size & Fit\nThe model (height 5'8\") is wearing a size S\nDupatta length: 2.30 mtr\nDupatta width: 1.17 mtr\n\n##Material & Care\nKurta fabric: Pure Cotton\nBottom fabric: Pure Cotton\nDupatta fabric: Pure Cotton\nMachine-wash"
+    },
+    {
+        "id": "e060847ce9e",
+        "for": "women",
+        "brand": "Divyank",
+        "price": 3469,
+        "discount": 58,
+        "size": [
+            "S",
+            "M",
+            "L",
+            "XL",
+            "XXL"
+        ],
+        "rating": 4.4,
+        "image": "https://res.cloudinary.com/rsimgx/image/upload/v1641575137/shop/diviyank-e060847ce9e_tmw0jl.jpg",
+        "title": "Women Red & Blue Ethnic Motifs Printed Thread Work Kurta with Palazzos & Dupatta",
+        "description": "##PRODUCT DETAILS \nRed & blue printed Kurta with Palazzos & dupatta\n\n###Kurta design:\nRed & gold coloured Ethnic motifs printed\nA-line shape\nRegular style\nRound neck, three-quarter regular sleeves\nThread work detail\nCalf length with straight hem\nViscose rayon machine weave fabric\n\n###Palazzos design:\nBlue Solid Palazzos\nPartially elasticated waistband\nDrawstring closure\nComes with blue & gold coloured ethnic motifs printed dupatta, has printed border\n\n###Size & Fit\nThe model (height 5'8) is wearing a size S\nDupatta length: 2.1 metres\nDupatta width: 1 metre\n\n###Material & Care\nTop fabric: Viscose Rayon 100%\nBottom fabric: Viscose Rayon 100%\nDupatta fabric: Pure Cotton\nMachine wash"
+    }
+]
