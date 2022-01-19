@@ -5,6 +5,9 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import Product from "../components/views/product";
 import Products from "../components/views/products";
 import { Container, Divider, Typography } from "@mui/material";
+import { getProducts, getProductsFor } from "./api/products";
+import { Product as ProductType } from "../components/product/product";
+import { getProduct } from "./api/products/[slug]";
 
 export const ProductContext = React.createContext({});
 
@@ -13,9 +16,8 @@ interface Param extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const response = await fetch(`${process.env.SITE_URL}/products`);
-  const data = await response.json();
-  const paths = data.map((item: any) => ({
+  const products: ProductType[] = getProducts();
+  const paths = products.map((item) => ({
     params: { slug: item.id },
   }));
 
@@ -25,17 +27,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps = async ({
-  params,
-}): Promise<any> => {
+export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { slug } = params as Param;
-  const response = await fetch(`${process.env.SITE_URL}/products/${slug}`);
-  const product = await response.json();
+  const product: ProductType = getProduct(slug);
   const { for: shopFor } = product;
-  const shopForResponse = await fetch(
-    `${process.env.SITE_URL}/products?shopFor=${shopFor}`
-  );
-  const moreProducts = await shopForResponse.json();
+  const moreProducts: ProductType[] = getProductsFor(shopFor);
   const products = moreProducts.filter((item: any) => item.id !== slug);
   return {
     props: { product, products },

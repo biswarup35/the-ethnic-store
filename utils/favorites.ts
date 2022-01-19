@@ -47,6 +47,9 @@ const isFavorite = (id: string): string | undefined => {
 };
 
 const getFavorites = (): string[] => {
+  if (localStorage.getItem(key) === null) {
+    return [];
+  }
   const { list }: Favorite = JSON.parse(localStorage.getItem(key) ?? "");
 
   return list;

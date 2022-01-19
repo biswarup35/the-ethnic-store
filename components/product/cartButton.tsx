@@ -1,22 +1,30 @@
+import { GlobalContext } from "../AppContext/GlobalContext";
 import * as React from "react";
 import { Button } from "@mui/material";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import RemoveShoppingCartIcon from "@mui/icons-material/RemoveShoppingCart";
 import { ProductContext } from "../../pages/[slug]";
-import { addToCart, inTheCart, removeFromCart } from "../../utils/cart";
+import { inTheCart } from "../../utils/cart";
 interface CartButtonProps {}
 
 const CartButton: React.FunctionComponent<CartButtonProps> = () => {
+  const { cartService }: any = React.useContext(GlobalContext);
   const { id }: any = React.useContext(ProductContext);
   const [inCart, setInCart] = React.useState<boolean>();
 
   const toggleCart = (inCart: boolean | undefined) => {
     if (inCart) {
-      void removeFromCart(id);
+      void cartService.send({
+        type: "REMOVE_CART",
+        id,
+      });
       setInCart(false);
     }
     if (!inCart) {
-      void addToCart(id);
+      void cartService.send({
+        type: "ADD_TO_CART",
+        id,
+      });
       setInCart(true);
     }
   };

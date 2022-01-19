@@ -5,8 +5,10 @@ interface FooterProps {}
 const Footer: React.FunctionComponent<FooterProps> = () => {
   return (
     <footer style={{ backgroundColor: "hotpink" }} id="footer">
-      <Toolbar variant="dense">
-        <Typography>{new Date().getFullYear()}</Typography>
+      <Toolbar sx={{ justifyContent: "center" }} variant="dense">
+        <Typography textAlign="center">
+          The Ethnic Store ©{new Date().getFullYear()}
+        </Typography>
       </Toolbar>
     </footer>
   );

@@ -1,33 +1,31 @@
 import * as React from "react";
-const fetch = require("node-fetch");
 import type { GetStaticProps, NextPage } from "next";
-import { getFavorites } from "../utils/favorites";
-
 import Products from "../components/views/products";
 import { Container, Divider, Typography } from "@mui/material";
+import { useActor } from "@xstate/react";
+import { Product } from "../components/product/product";
+import { getProducts } from "./api/products";
+import { GlobalContext } from "../components/AppContext/GlobalContext";
 
 export const getStaticProps: GetStaticProps = async () => {
-  let data = {};
-  try {
-    let response = await fetch(`${process.env.SITE_URL}/products`);
-    data = await response.json();
-  } catch (error) {
-    console.log(error);
-  }
+  const data: Product[] = getProducts();
   return {
     props: { data },
   };
 };
 
 const Favorites: NextPage = ({ data }: any) => {
+  const { favService }: any = React.useContext(GlobalContext);
+  const [state]: any = useActor(favService);
+  const { favorites: favoriteList } = state.context;
+
   let [favorites, setFavorites] = React.useState();
   React.useEffect(() => {
-    const list = getFavorites();
-
-    let favData = data.filter((item: any) => list.includes(item.id));
-    console.log(favData);
+    let favData = data.filter((item: Product) =>
+      favoriteList.includes(item.id)
+    );
     setFavorites(favData);
-  }, [data]);
+  }, [data, favoriteList]);
 
   return (
     <React.Fragment>

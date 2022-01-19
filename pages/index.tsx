@@ -1,10 +1,23 @@
 import * as React from "react";
 import type { NextPage } from "next";
+import { Product } from "../components/product/product";
+import { getProducts } from "./api/products";
+import { Container } from "@mui/material";
+import Products from "../components/views/products";
 
-const Home: NextPage = () => {
+export const getStaticProps = () => {
+  const products: Product[] = getProducts();
+  return {
+    props: { products },
+  };
+};
+
+const Home: NextPage = ({ products }: any) => {
   return (
     <React.Fragment>
-      <h1>Home Page</h1>
+      <Container maxWidth="lg">
+        <Products data={products} hideFilter />
+      </Container>
     </React.Fragment>
   );
 };

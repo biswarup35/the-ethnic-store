@@ -12,19 +12,25 @@ import {
   Avatar,
   Menu,
   MenuItem,
+  Badge,
+  Button,
 } from "@mui/material";
 import * as React from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Desktop from "./desktop";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import PersonIcon from "@mui/icons-material/Person";
 import Mobile from "./mobile";
 import { useUser } from "@auth0/nextjs-auth0";
+import { useActor } from "@xstate/react";
+import { GlobalContext } from "../AppContext/GlobalContext";
 
 interface HeaderProps {}
 
 const Header: React.FunctionComponent<HeaderProps> = (): JSX.Element => {
+  const { cartService }: any = React.useContext(GlobalContext);
+  const [state]: any = useActor(cartService);
+  const { items } = state.context;
   const { user } = useUser();
 
   const smUp = useMediaQuery((theme: Theme) => theme.breakpoints.up("sm"));
@@ -46,10 +52,6 @@ const Header: React.FunctionComponent<HeaderProps> = (): JSX.Element => {
     setOpen((value) => !value);
   };
 
-  React.useEffect(() => {
-    console.log(user);
-  }, [user]);
-
   return (
     <React.Fragment>
       <AppBar color="default" elevation={0}>
@@ -70,7 +72,11 @@ const Header: React.FunctionComponent<HeaderProps> = (): JSX.Element => {
               )}
               {smUp && (
                 <React.Fragment>
-                  <Typography>The Ethnic Store</Typography>
+                  <Link href={"/"} passHref>
+                    <Button sx={{ textTransform: "none" }}>
+                      The Ethnic Store
+                    </Button>
+                  </Link>
                 </React.Fragment>
               )}
             </Box>
@@ -105,7 +111,9 @@ const Header: React.FunctionComponent<HeaderProps> = (): JSX.Element => {
               )}
               <Link href={"/checkout"} passHref>
                 <IconButton>
-                  <ShoppingCartIcon />
+                  <Badge badgeContent={items.length} color="primary">
+                    <ShoppingCartIcon />
+                  </Badge>
                 </IconButton>
               </Link>
             </Box>

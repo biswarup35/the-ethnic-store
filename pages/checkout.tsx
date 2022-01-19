@@ -10,36 +10,43 @@ import {
   Button,
 } from "@mui/material";
 import ItemCheckout from "../components/views/itemCheckout";
-import { cartItems } from "../utils/cart";
+import { GlobalContext } from "../components/AppContext/GlobalContext";
+import { useActor } from "@xstate/react";
+import discount from "../utils/discount";
+import { Product } from "../components/product/product";
+import { getProducts } from "./api/products";
 
 export const getStaticProps: GetStaticProps = async () => {
-  let data = {};
-  try {
-    let response = await fetch(`${process.env.SITE_URL}/products`);
-    data = await response.json();
-  } catch (error) {
-    console.log(error);
-  }
+  const data: Product[] = getProducts();
   return {
     props: { data },
   };
 };
 
 const Checkout: NextPage = ({ data }: any) => {
-  const [items, setItems] = React.useState([]);
+  const { cartService }: any = React.useContext(GlobalContext);
+  const [state]: any = useActor(cartService);
+  const { items: cartItems } = state.context;
+  const [items, setItems] = React.useState<Product[]>([]);
+  const [price, setPrice] = React.useState<number>();
+
   React.useEffect(() => {
-    const list = cartItems();
-    const items = data.filter((item: any) => list?.includes(item.id));
+    const items = data.filter((item: Product) => cartItems?.includes(item.id));
     setItems(items);
-  }, [data]);
+    const priceArr: number[] = items.map((item: Product) =>
+      discount(item.price)(item.discount)
+    );
+    setPrice(priceArr?.reduce((prev, curr) => prev + curr, 0));
+  }, [data, cartItems]);
   if (items) {
     return (
       <React.Fragment>
         <Container sx={{ my: 2 }} maxWidth="md">
           <Stack direction="column" gap={2}>
-            {items.map((item: any) => (
+            {items.map((item) => (
               <ItemCheckout
                 key={item.id}
+                id={item.id}
                 image={item.image}
                 title={item.title}
                 brand={item.brand}
@@ -57,7 +64,7 @@ const Checkout: NextPage = ({ data }: any) => {
             <Link href={"/order"} passHref>
               <Button variant="contained">Place order</Button>
             </Link>
-            <Typography>Total price:</Typography>
+            <Typography>Total price: {price}</Typography>
           </Box>
         </Container>
       </React.Fragment>

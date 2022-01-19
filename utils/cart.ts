@@ -18,9 +18,9 @@ const addToCart = (id: string) => {
   }
 };
 
-const cartItems = (): string[] | undefined => {
+const cartItems = (): string[] => {
   if (localStorage.getItem(key) === null) {
-    return;
+    return [];
   }
   const { list }: Cart = JSON.parse(localStorage.getItem(key) ?? "");
   return list;
@@ -53,4 +53,13 @@ const inTheCart = (id: string): string | undefined => {
   }
 };
 
-export { addToCart, removeFromCart, cartItems, inTheCart };
+const resetCart = () => {
+  const products: Cart = {
+    list: [],
+  };
+  if (window) {
+    localStorage.setItem(key, JSON.stringify(products));
+  }
+};
+
+export { addToCart, removeFromCart, cartItems, inTheCart, resetCart };

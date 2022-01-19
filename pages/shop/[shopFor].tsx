@@ -1,12 +1,10 @@
+import { Container } from "@mui/material";
 import * as React from "react";
+import { Product } from "../../components/product/product";
 const fetch = require("node-fetch");
 import Products from "../../components/views/products";
+import { getProductsFor } from "../api/products";
 interface ShopForProps {}
-
-/**
- * TODO Data Handing for Filter and Sorting through rasing Events
- *
- */
 
 export const getStaticPaths = async () => {
   const posts = [{ for: "men" }, { for: "women" }, { for: "kids" }];
@@ -18,17 +16,18 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async ({ params }: any) => {
   const { shopFor } = params;
-  const response = await fetch(
-    `${process.env.SITE_URL}/products?shopFor=${shopFor}`
-  );
-  const data = await response.json();
+  const products: Product[] = getProductsFor(shopFor);
   return {
-    props: { data },
+    props: { products },
   };
 };
 
-const ShopFor: React.FunctionComponent<ShopForProps> = ({ data }: any) => {
-  return <Products data={data} />;
+const ShopFor: React.FunctionComponent<ShopForProps> = ({ products }: any) => {
+  return (
+    <Container maxWidth="lg">
+      <Products data={products} hideFilter />
+    </Container>
+  );
 };
 
 export default ShopFor;
