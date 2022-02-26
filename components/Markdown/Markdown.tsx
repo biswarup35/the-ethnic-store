@@ -1,4 +1,3 @@
-import * as React from "react";
 import Markedown from "markdown-to-jsx";
 import { Typography } from "@mui/material";
 

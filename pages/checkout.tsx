@@ -9,12 +9,12 @@ import {
   Typography,
   Button,
 } from "@mui/material";
-import ItemCheckout from "../components/views/itemCheckout";
-import { GlobalContext } from "../components/AppContext/GlobalContext";
-import { useActor } from "@xstate/react";
+import { CheckoutItems } from "../Views";
 import discount from "../utils/discount";
 import { Product } from "../components/product/product";
 import { getProducts } from "./api/products";
+import { cartState } from "../App";
+import { useSnapshot } from "valtio";
 
 export const getStaticProps: GetStaticProps = async () => {
   const data: Product[] = getProducts();
@@ -24,34 +24,34 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Checkout: NextPage = ({ data }: any) => {
-  const { cartService }: any = React.useContext(GlobalContext);
-  const [state]: any = useActor(cartService);
-  const { items: cartItems } = state.context;
-  const [items, setItems] = React.useState<Product[]>([]);
-  const [price, setPrice] = React.useState<number>();
+  const { items, removeItem, update } = useSnapshot(cartState);
+  const [total, setTotal] = React.useState(0);
 
   React.useEffect(() => {
-    const items = data.filter((item: Product) => cartItems?.includes(item.id));
-    setItems(items);
-    const priceArr: number[] = items.map((item: Product) =>
-      discount(item.price)(item.discount)
-    );
-    setPrice(priceArr?.reduce((prev, curr) => prev + curr, 0));
-  }, [data, cartItems]);
-  if (items) {
+    const test = items.map((item) => ({
+      price: discount(item.price * item.quantity)(item.discount),
+    }));
+    const total = test.reduce((acc, curr) => acc + curr.price, 0);
+    setTotal(total);
+  }, [items]);
+
+  if (items.length > 0) {
     return (
       <React.Fragment>
-        <Container sx={{ my: 2 }} maxWidth="md">
+        <Container sx={{ my: 2 }} maxWidth="lg">
           <Stack direction="column" gap={2}>
-            {items.map((item) => (
-              <ItemCheckout
-                key={item.id}
+            {items.map((item, index) => (
+              <CheckoutItems
+                key={item.itemId}
+                index={index}
                 id={item.id}
                 image={item.image}
                 title={item.title}
                 brand={item.brand}
                 price={item.price}
+                size={item.size}
                 discount={item.discount}
+                onRemove={() => removeItem(item.itemId)}
               />
             ))}
           </Stack>
@@ -64,7 +64,17 @@ const Checkout: NextPage = ({ data }: any) => {
             <Link href={"/order"} passHref>
               <Button variant="contained">Place order</Button>
             </Link>
-            <Typography>Total price: {price}</Typography>
+            <Stack alignItems="center">
+              <Typography variant="body2" component="span">
+                Total:
+                <Typography sx={{ mx: 1 }} variant="h6" component="span">
+                  &#8377; {` ${total.toFixed(2)}`}
+                </Typography>
+              </Typography>
+              <Typography variant="body2">
+                (after discount, incl. VAT)
+              </Typography>
+            </Stack>
           </Box>
         </Container>
       </React.Fragment>

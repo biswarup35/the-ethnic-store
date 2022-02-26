@@ -1,9 +1,7 @@
 import * as React from "react";
-const fetch = require("node-fetch");
 import { ParsedUrlQuery } from "querystring";
 import { GetStaticProps, GetStaticPaths } from "next";
-import Product from "../components/views/product";
-import Products from "../components/views/products";
+import { Product, Products } from "../Views";
 import { Container, Divider, Typography } from "@mui/material";
 import { getProducts, getProductsFor } from "./api/products";
 import { Product as ProductType } from "../components/product/product";
@@ -44,9 +42,7 @@ const ProductPage: React.FunctionComponent<ProductPageProps> = (props) => {
   const { product, products } = props as any;
   return (
     <React.Fragment>
-      <ProductContext.Provider value={product}>
-        <Product data={product} />
-      </ProductContext.Provider>
+      <Product data={product} />
       <Container sx={{ my: 2 }} maxWidth="lg">
         <Divider sx={{ my: 2 }} />
         <Typography

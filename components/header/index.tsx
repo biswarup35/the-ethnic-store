@@ -22,15 +22,13 @@ import Desktop from "./desktop";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import Mobile from "./mobile";
 import { useUser } from "@auth0/nextjs-auth0";
-import { useActor } from "@xstate/react";
-import { GlobalContext } from "../AppContext/GlobalContext";
+import { cartState } from "../../App";
+import { useSnapshot } from "valtio";
 
 interface HeaderProps {}
 
 const Header: React.FunctionComponent<HeaderProps> = (): JSX.Element => {
-  const { cartService }: any = React.useContext(GlobalContext);
-  const [state]: any = useActor(cartService);
-  const { items } = state.context;
+  const { items } = useSnapshot(cartState);
   const { user } = useUser();
 
   const smUp = useMediaQuery((theme: Theme) => theme.breakpoints.up("sm"));

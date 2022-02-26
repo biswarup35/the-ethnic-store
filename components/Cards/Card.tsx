@@ -1,4 +1,4 @@
-import * as React from "react";
+import { FC, Fragment } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import truncateText from "../../utils/truncateText";
@@ -10,8 +10,7 @@ import {
   Typography,
   Box,
 } from "@mui/material";
-import { Pricing } from "..";
-import FavoriteIcons from "./favoriteIcon";
+import { Pricing, AddToFavoriteIcon } from "..";
 
 interface CardProps {
   slug: string;
@@ -22,7 +21,7 @@ interface CardProps {
   image: string;
 }
 
-const Card: React.FunctionComponent<CardProps> = ({
+const Card: FC<CardProps> = ({
   slug,
   brand,
   title,
@@ -31,7 +30,7 @@ const Card: React.FunctionComponent<CardProps> = ({
   image,
 }) => {
   return (
-    <React.Fragment>
+    <Fragment>
       <MuiCard sx={{ maxWidth: 284 }} elevation={0}>
         <CardMedia sx={{ position: "relative" }}>
           <Link href={`/${encodeURIComponent(slug)}`} passHref>
@@ -46,7 +45,7 @@ const Card: React.FunctionComponent<CardProps> = ({
             </CardActionArea>
           </Link>
           <Box sx={{ position: "absolute", top: 5, right: 5 }}>
-            <FavoriteIcons />
+            <AddToFavoriteIcon />
           </Box>
         </CardMedia>
         <CardContent>
@@ -69,7 +68,7 @@ const Card: React.FunctionComponent<CardProps> = ({
           <Pricing price={price} discount={discount} />
         </CardContent>
       </MuiCard>
-    </React.Fragment>
+    </Fragment>
   );
 };
 
