@@ -3,7 +3,7 @@ import type { NextPage } from "next";
 import { Product } from "../components/product/product";
 import { getProducts } from "./api/products";
 import { Container } from "@mui/material";
-import Products from "../components/views/products";
+import { Products } from "../Views";
 
 export const getStaticProps = () => {
   const products: Product[] = getProducts();

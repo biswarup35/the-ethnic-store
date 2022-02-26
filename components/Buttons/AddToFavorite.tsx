@@ -1,9 +1,22 @@
 import { Button } from "@mui/material";
+import { FC } from "react";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
-const AddToFavorite = () => {
+interface IAddToFavoriteProps {
+  isFavorite: boolean;
+  onFavorite: () => void;
+}
+
+const AddToFavorite: FC<IAddToFavoriteProps> = ({ isFavorite, onFavorite }) => {
   return (
-    <Button size="large" variant="outlined">
-      Add to favorite
+    <Button
+      endIcon={isFavorite ? <FavoriteIcon /> : <FavoriteBorderIcon />}
+      onClick={onFavorite}
+      size="large"
+      variant="outlined"
+    >
+      {isFavorite ? "Remove" : "Add to favorites"}
     </Button>
   );
 };

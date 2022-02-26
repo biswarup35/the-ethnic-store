@@ -1,4 +1,4 @@
-import { FC, Fragment } from "react";
+import { FC, Fragment, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import truncateText from "../../utils/truncateText";
@@ -10,6 +10,8 @@ import {
   Typography,
   Box,
 } from "@mui/material";
+import { favoriteState } from "../../App";
+import { useSnapshot } from "valtio";
 import { Pricing, AddToFavoriteIcon } from "..";
 
 interface CardProps {
@@ -19,6 +21,7 @@ interface CardProps {
   price: number;
   discount: number;
   image: string;
+  id: string;
 }
 
 const Card: FC<CardProps> = ({
@@ -28,7 +31,10 @@ const Card: FC<CardProps> = ({
   price,
   discount,
   image,
+  id,
 }) => {
+  const { add, remove, isFavorite, items } = useSnapshot(favoriteState);
+  useEffect(() => {}, [items]);
   return (
     <Fragment>
       <MuiCard sx={{ maxWidth: 284 }} elevation={0}>
@@ -45,7 +51,16 @@ const Card: FC<CardProps> = ({
             </CardActionArea>
           </Link>
           <Box sx={{ position: "absolute", top: 5, right: 5 }}>
-            <AddToFavoriteIcon />
+            <AddToFavoriteIcon
+              isFavorite={isFavorite(id)}
+              onFavorite={() => {
+                if (isFavorite(id)) {
+                  remove(id);
+                } else {
+                  add(id);
+                }
+              }}
+            />
           </Box>
         </CardMedia>
         <CardContent>

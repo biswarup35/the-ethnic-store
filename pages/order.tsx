@@ -12,12 +12,10 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { GlobalContext } from "../components/AppContext/GlobalContext";
 
 export const getServerSideProps = withPageAuthRequired();
 
 const Order = ({ user }: UserContext) => {
-  const { cartService }: any = React.useContext(GlobalContext);
   const [open, setOpen] = React.useState(false);
   return (
     <>
@@ -51,16 +49,7 @@ const Order = ({ user }: UserContext) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button
-            onClick={() => {
-              cartService.send({
-                type: "RESET_CART",
-              });
-              setOpen(false);
-            }}
-          >
-            OK
-          </Button>
+          <Button>OK</Button>
         </DialogActions>
       </Dialog>
     </>

@@ -10,7 +10,7 @@ import {
 import Image from "next/image";
 import { FC, useEffect } from "react";
 import { useSnapshot } from "valtio";
-import { productState, cartState } from "../App";
+import { productState, cartState, favoriteState } from "../App";
 import {
   AddToCart,
   AddToFavorite,
@@ -42,12 +42,12 @@ const Product: FC<ProductProps> = ({
   const { quantity, setQuantity, increment, decrement, size, setSize } =
     useSnapshot(productState);
   const { addItem } = useSnapshot(cartState);
-
+  const { add, isFavorite, remove, items } = useSnapshot(favoriteState);
   useEffect(() => {
     return () => {
       setQuantity(1);
     };
-  }, [setQuantity]);
+  }, [setQuantity, items]);
 
   return (
     <Container sx={{ my: 4 }} maxWidth="lg">
@@ -102,7 +102,16 @@ const Product: FC<ProductProps> = ({
                 });
               }}
             />
-            <AddToFavorite />
+            <AddToFavorite
+              isFavorite={isFavorite(id)}
+              onFavorite={() => {
+                if (isFavorite(id)) {
+                  remove(id);
+                } else {
+                  add(id);
+                }
+              }}
+            />
           </Stack>
           <Markdown>{description}</Markdown>
         </Grid>

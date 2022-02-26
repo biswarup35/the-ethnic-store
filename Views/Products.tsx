@@ -21,6 +21,7 @@ const Products = ({ data, hideFilter }: any) => {
             <Grid key={item.id} item lg={3}>
               <ProductsContext.Provider value={item}>
                 <Card
+                  id={item.id}
                   slug={item.id}
                   brand={item.brand}
                   title={item.title}

@@ -1,11 +1,11 @@
 import * as React from "react";
 import type { GetStaticProps, NextPage } from "next";
-import Products from "../components/views/products";
+import { Products } from "../Views";
 import { Container, Divider, Typography } from "@mui/material";
-import { useActor } from "@xstate/react";
 import { Product } from "../components/product/product";
 import { getProducts } from "./api/products";
-import { GlobalContext } from "../components/AppContext/GlobalContext";
+import { favoriteState } from "../App";
+import { useSnapshot } from "valtio";
 
 export const getStaticProps: GetStaticProps = async () => {
   const data: Product[] = getProducts();
@@ -15,18 +15,8 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Favorites: NextPage = ({ data }: any) => {
-  const { favService }: any = React.useContext(GlobalContext);
-  const [state]: any = useActor(favService);
-  const { favorites: favoriteList } = state.context;
-
-  let [favorites, setFavorites] = React.useState();
-  React.useEffect(() => {
-    let favData = data.filter((item: Product) =>
-      favoriteList.includes(item.id)
-    );
-    setFavorites(favData);
-  }, [data, favoriteList]);
-
+  const { items } = useSnapshot(favoriteState);
+  const products = data.filter((product: any) => items.includes(product.id));
   return (
     <React.Fragment>
       <Container sx={{ my: 2 }} maxWidth="lg">
@@ -39,7 +29,7 @@ const Favorites: NextPage = ({ data }: any) => {
           Your favorites
         </Typography>
         <Divider sx={{ my: 2 }} />
-        {favorites && <Products data={favorites} hideFilter />}
+        {products && <Products data={products} hideFilter />}
       </Container>
     </React.Fragment>
   );

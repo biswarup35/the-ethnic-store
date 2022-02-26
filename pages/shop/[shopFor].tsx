@@ -1,8 +1,7 @@
 import { Container } from "@mui/material";
 import * as React from "react";
 import { Product } from "../../components/product/product";
-const fetch = require("node-fetch");
-import Products from "../../components/views/products";
+import { Products } from "../../Views";
 import { getProductsFor } from "../api/products";
 interface ShopForProps {}
 
