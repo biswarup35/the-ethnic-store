@@ -49,7 +49,7 @@ export const favoriteList: IFavorite = proxy<IFavorite>({
     }
   },
   isFavorite: (item) => {
-    return favoriteList.items.includes(item);
+    return favoriteList?.items?.includes(item) ?? false;
   },
 });
 
