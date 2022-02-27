@@ -1,18 +1,7 @@
 import * as React from "react";
 import { useRouter } from "next/router";
 import { withPageAuthRequired, UserContext } from "@auth0/nextjs-auth0";
-import {
-  Button,
-  Container,
-  Dialog,
-  DialogActions,
-  DialogContentText,
-  DialogContent,
-  DialogTitle,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Container, Stack, TextField, Typography } from "@mui/material";
 import { cartState, orderState } from "../App";
 import { useSnapshot } from "valtio";
 
@@ -35,21 +24,20 @@ const initializeRazorpay = () => {
 };
 
 const Order = ({ user }: UserContext) => {
-  const [open, setOpen] = React.useState(false);
-  const { items } = useSnapshot(cartState);
+  const { items, cartValue } = useSnapshot(cartState);
   const { addOrder } = useSnapshot(orderState);
   const router = useRouter();
   const handlePayment = React.useCallback(async () => {
     const res = await initializeRazorpay();
     if (!res) {
-      alert("Razorpay SDK Failed to load");
+      console.log("Razorpay SDK Failed to load");
       return;
     }
     // Send Data to Backend for verification
     const data = await fetch("/api/razorpay", {
       method: "POST",
       body: JSON.stringify({
-        amount: 100,
+        amount: cartValue,
         currency: "INR",
       }),
     }).then((t) => t.json());
@@ -65,6 +53,7 @@ const Order = ({ user }: UserContext) => {
         handler: function () {
           // store the order details on localStorage
           addOrder({
+            userName: user?.name ?? "",
             orderId: data.id as string,
             amount: data.amount as number,
             currency: data.currency as string,
@@ -82,7 +71,7 @@ const Order = ({ user }: UserContext) => {
       const paymentObject = new (window as any).Razorpay(options);
       paymentObject.open();
     }
-  }, [addOrder, items, router]);
+  }, [addOrder, items, router, user, cartValue]);
   return (
     <>
       <Container sx={{ my: 2 }} maxWidth="sm">
@@ -102,17 +91,6 @@ const Order = ({ user }: UserContext) => {
           Confirm
         </Button>
       </Container>
-      <Dialog open={open}>
-        <DialogTitle>Thank you!</DialogTitle>
-        <DialogContent>
-          <DialogContentText>
-            Thank you, {user?.name} your order has been placed!
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button>OK</Button>
-        </DialogActions>
-      </Dialog>
     </>
   );
 };

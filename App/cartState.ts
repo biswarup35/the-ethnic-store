@@ -26,6 +26,9 @@ interface ICart {
   quantityIncrement(index: number): void;
   quantityDecrement(index: number): void;
   getQuantity(index: number): number;
+  reset(): void;
+  cartValue: number;
+  setCartValue(value: number): void;
 }
 
 const cartState: ICart = proxy<ICart>({
@@ -48,6 +51,13 @@ const cartState: ICart = proxy<ICart>({
   update: false,
   toggleUpdate: () => {
     cartState.update = !cartState.update;
+  },
+  reset: () => {
+    cartState.items = [];
+  },
+  cartValue: 0,
+  setCartValue: (value) => {
+    cartState.cartValue = value;
   },
 });
 

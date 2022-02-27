@@ -24,7 +24,7 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Checkout: NextPage = ({ data }: any) => {
-  const { items, removeItem, update } = useSnapshot(cartState);
+  const { items, removeItem, update, setCartValue } = useSnapshot(cartState);
   const [total, setTotal] = React.useState(0);
 
   React.useEffect(() => {
@@ -33,7 +33,8 @@ const Checkout: NextPage = ({ data }: any) => {
     }));
     const total = test.reduce((acc, curr) => acc + curr.price, 0);
     setTotal(total);
-  }, [items]);
+    setCartValue(total);
+  }, [items, setCartValue]);
 
   if (items.length > 0) {
     return (

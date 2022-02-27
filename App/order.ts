@@ -55,6 +55,16 @@ const orderState = proxy({
       return;
     }
   },
+  findOrder: (orderId: string | undefined) => {
+    if (typeof window !== "undefined") {
+      let orders = JSON.parse(localStorage.getItem(key) || "[]");
+      return orders.find(
+        (order: { orderId: string }) => order.orderId === orderId
+      );
+    } else {
+      return;
+    }
+  },
 });
 
 export default orderState;
