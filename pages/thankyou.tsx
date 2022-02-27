@@ -52,7 +52,7 @@ const ThankYou = () => {
             </Typography>
             <Typography>Order ID: {order.orderId}</Typography>
             <Typography>Amount: {(order.amount / 100).toFixed(2)}</Typography>
-            <Box>
+            <Box component="p">
               <Typography>Items:</Typography>
               {order?.items?.map((item: any) => (
                 <Stack

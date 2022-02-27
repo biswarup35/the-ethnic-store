@@ -16,7 +16,16 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Favorites: NextPage = ({ data }: any) => {
   const { items } = useSnapshot(favoriteState);
-  const products = data.filter((product: any) => items.includes(product.id));
+  const [products, setProducts] = React.useState();
+
+  React.useEffect(() => {
+    if (items) {
+      const products = data.filter((product: any) =>
+        items?.includes(product.id)
+      );
+      setProducts(products);
+    }
+  }, [data, items]);
   return (
     <React.Fragment>
       <Container sx={{ my: 2 }} maxWidth="lg">
