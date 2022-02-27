@@ -38,7 +38,7 @@ const setOrders = () => {
 };
 
 const orderState = proxy({
-  orders: [] as {}[],
+  orders: setOrders(),
   addOrder: (order: any) => {
     if (typeof window !== "undefined") {
       if (localStorage.getItem(key) === null) {

@@ -1,5 +1,4 @@
 import {
-  Container,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -27,21 +26,20 @@ const ThankYou = () => {
   const { orderId } = query as {
     orderId: string;
   };
+  const { findOrder } = useSnapshot(orderState);
+  const order = findOrder(orderId);
+  const { reset } = useSnapshot(cartState);
 
   React.useEffect(() => {
     if (orderId) {
       setOpen(true);
+      reset();
     }
 
     if (!orderId) {
       push("/");
     }
-  }, [orderId, push]);
-
-  const { findOrder } = useSnapshot(orderState);
-  const order = findOrder(orderId);
-  const { reset } = useSnapshot(cartState);
-  console.log(order);
+  }, [orderId, push, reset]);
 
   return (
     <React.Fragment>
@@ -72,10 +70,16 @@ const ThankYou = () => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button variant="outlined">View Orders</Button>
           <Button
             onClick={() => {
-              reset();
+              push("/orders");
+            }}
+            variant="outlined"
+          >
+            View Orders
+          </Button>
+          <Button
+            onClick={() => {
               push("/");
             }}
             variant="contained"

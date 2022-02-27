@@ -58,6 +58,7 @@ const Order = ({ user }: UserContext) => {
             amount: data.amount as number,
             currency: data.currency as string,
             items,
+            createdAt: new Date().toISOString(),
           });
           router.push(`/thankyou?orderId=${data.id}`);
         },
