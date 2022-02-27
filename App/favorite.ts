@@ -49,7 +49,11 @@ export const favoriteList: IFavorite = proxy<IFavorite>({
     }
   },
   isFavorite: (item) => {
-    return favoriteList?.items?.includes(item) ?? false;
+    if (favoriteList?.items?.filter((i: string) => i === item)?.length > 0) {
+      return true;
+    } else {
+      return false;
+    }
   },
 });
 
