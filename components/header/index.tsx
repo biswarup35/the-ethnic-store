@@ -24,6 +24,7 @@ import Mobile from "./mobile";
 import { useUser } from "@auth0/nextjs-auth0";
 import { cartState } from "../../App";
 import { useSnapshot } from "valtio";
+import { Logo } from "../Icons";
 
 interface HeaderProps {}
 
@@ -71,9 +72,13 @@ const Header: React.FunctionComponent<HeaderProps> = (): JSX.Element => {
               {smUp && (
                 <React.Fragment>
                   <Link href={"/"} passHref>
-                    <Button sx={{ textTransform: "none" }}>
-                      The Ethnic Store
-                    </Button>
+                    <IconButton
+                      disableFocusRipple
+                      disableRipple
+                      disableTouchRipple
+                    >
+                      <Logo />
+                    </IconButton>
                   </Link>
                 </React.Fragment>
               )}

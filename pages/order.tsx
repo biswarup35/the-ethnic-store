@@ -49,7 +49,8 @@ const Order = ({ user }: UserContext) => {
         amount: data.amount,
         order_id: data.id,
         description: "Thankyou for your payment",
-        image: "https://manuarora.in/logo.png",
+        image:
+          "https://res.cloudinary.com/rsimgx/image/upload/v1645949309/shop/es-icon_wmujbs.png",
         handler: function () {
           // store the order details on localStorage
           addOrder({
@@ -65,7 +66,7 @@ const Order = ({ user }: UserContext) => {
         prefill: {
           name: "The Ethnic Store",
           email: "theethnicstore@gmail.com",
-          contact: "7001585904",
+          contact: "7001580000",
         },
       };
 
